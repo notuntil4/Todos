@@ -1,0 +1,25 @@
+
+.container {
+    width: 90%;
+    margin: auto;
+    margin-top: 3%;
+  }
+
+table {
+  width: 100%;
+}
+
+.btncontainer {
+  margin-left: 3%;
+  height: 100%;
+  float: right;
+}
+
+button {
+  margin: 2px;
+}
+
+.addtodobtn {
+  margin-top: 3%;
+  text-decoration: none;
+}

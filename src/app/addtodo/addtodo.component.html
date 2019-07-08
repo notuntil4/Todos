@@ -1,0 +1,68 @@
+<div class="container">
+    <div [hidden]="submitted">
+        <h1>Add Todo</h1>
+        <form (ngSubmit)="onSubmit()" #todoForm="ngForm">
+            <!-- Username -->
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" class="form-control" id="name" required
+                    [(ngModel)] = "todo.username" name="name" #todousername = "ngModel">
+            </div>
+
+            <div class="invalid" [hidden] = "todousername.valid || todousername.pristine">Value cannot be empty</div>
+    
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" required
+                    [(ngModel)] = "todo.title" name="description" #tododescription = "ngModel">
+            </div>
+
+            <div class="invalid" [hidden] = "todousername.valid || todousername.pristine">Value cannot be empty</div>
+
+            <!-- Completed -->
+            <div class="form-group">
+                    <label for="completed">Completed</label><br>       
+                    <input type="radio" name="completed" [(ngModel)]="todo.completed" [value]="true"> True 
+                    <input type="radio" name="completed" [(ngModel)]="todo.completed" [value]="false"> False
+            </div>
+
+            <!-- Target Date -->
+            <div class="form-group">
+                <label for="targetDate">Target Date</label>
+                <input type="date" class="form-control" id="targetDate" required
+                    [(ngModel)] = "todo.targetDate"
+                    name = "targetDate" #todotargetdate = "ngModel">
+            </div>
+        
+            {{diagnostic}}<br>
+
+            <button type="submit" class="btn btn-success" [disabled] = "todoForm.form.invalid">Add Todo</button>
+        </form>
+    </div>
+
+    <div [hidden]="!submitted">
+        <h2>You submitted the following: </h2>
+        <div class="row">
+            <div class="col-xs-3">Username</div>
+            <div class="col-xs-9">{{ todo.username }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Description</div>
+            <div class="col-xs-9">{{ todo.title }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Completed</div>
+            <div class="col-xs-9">{{ todo.completed }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Target Date</div>
+            <div class="col-xs-9">{{ todo.targetDate | date:'MM/dd/yyyy' }}</div>
+        </div>
+
+        <div class="actionbtns">
+            <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+            <a mat-raised-button color="accent" class="listtodosbtn" routerLink="/todolist">List Todos</a>
+        </div>
+    </div>
+</div>
