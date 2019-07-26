@@ -1,0 +1,32 @@
+{
+    "todos": [
+        {
+            "id": 1,
+            "user": "root",
+            "desc": "Shopping",
+            "isDone": false,
+            "targetDate": "2019-07-12T14:21:35.097+0000"
+        },
+        {
+            "id": 2,
+            "user": "root",
+            "desc": "Read something",
+            "isDone": false,
+            "targetDate": "2019-07-12T14:21:35.097+0000"
+        },
+        {
+            "id": 3,
+            "user": "root",
+            "desc": "Visit somewhere",
+            "isDone": false,
+            "targetDate": "2019-07-12T14:21:35.097+0000"
+        },
+        {
+            "id": 4,
+            "user": "orie",
+            "desc": "Visit somewhere",
+            "isDone": false,
+            "targetDate": "2019-07-12T14:21:35.097+0000"
+        }
+    ]
+}

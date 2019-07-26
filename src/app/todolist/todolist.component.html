@@ -1,5 +1,8 @@
 <div class="container">
-    <table mat-table [dataSource]="todos" class="mat-elevation-z8">
+
+    <p [hidden]="notDisplay">0 todos found on your list</p>
+
+    <table mat-table [dataSource]="todos" class="mat-elevation-z8" [hidden]="!notDisplay">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -13,19 +16,19 @@
         <!-- Username Column -->
         <ng-container matColumnDef="username">
           <th mat-header-cell *matHeaderCellDef> Username </th>
-          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.user}} </td>
         </ng-container>
       
         <!-- Title Column -->
         <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef> Title </th>
-          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.desc}} </td>
         </ng-container>
       
         <!-- Completed Column -->
         <ng-container matColumnDef="completed">
           <th mat-header-cell *matHeaderCellDef> Completed </th>
-          <td mat-cell *matCellDef="let element"> {{element.completed}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.isDone}} </td>
         </ng-container>
 
         <!-- Target Date Column-->
@@ -37,7 +40,7 @@
                         <!-- {{element.targetDate}} -->
                     </div>
                     <div class="btncontainer"> 
-                        <button mat-raised-button color="warn" class="btndelete" (click)="deleteTodo(element.id)">Delete</button>
+                        <button mat-raised-button color="warn" class="btndelete" (click)="deleteATodo(element.id)">Delete</button>
                         <button mat-raised-button color="primary">Edit</button>
                     </div>
                 </td>

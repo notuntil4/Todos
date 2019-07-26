@@ -1,30 +1,30 @@
 <div class="container">
     <div [hidden]="submitted">
         <h1>Add Todo</h1>
-        <form (ngSubmit)="onSubmit()" #todoForm="ngForm">
+        <form (ngSubmit)="onSubmit(todo)" #todoForm="ngForm">
             <!-- Username -->
             <div class="form-group">
-                <label for="name">Username</label>
-                <input type="text" class="form-control" id="name" required
-                    [(ngModel)] = "todo.username" name="name" #todousername = "ngModel">
+                <label for="user">Username</label>
+                <input type="text" class="form-control" id="user" required
+                    [(ngModel)] = "todo.user" name="user" #todousername = "ngModel">
             </div>
 
             <div class="invalid" [hidden] = "todousername.valid || todousername.pristine">Value cannot be empty</div>
     
             <!-- Description -->
             <div class="form-group">
-                <label for="description">Description</label>
-                <input type="text" class="form-control" id="description" required
-                    [(ngModel)] = "todo.title" name="description" #tododescription = "ngModel">
+                <label for="desc">Description</label>
+                <input type="text" class="form-control" id="desc" required
+                    [(ngModel)] = "todo.desc" name="desc" #tododescription = "ngModel">
             </div>
 
-            <div class="invalid" [hidden] = "todousername.valid || todousername.pristine">Value cannot be empty</div>
+            <div class="invalid" [hidden] = "tododescription.valid || tododescription.pristine">Value cannot be empty</div>
 
             <!-- Completed -->
             <div class="form-group">
-                    <label for="completed">Completed</label><br>       
-                    <input type="radio" name="completed" [(ngModel)]="todo.completed" [value]="true"> True 
-                    <input type="radio" name="completed" [(ngModel)]="todo.completed" [value]="false"> False
+                    <label for="isDone">Completed</label><br>       
+                    <input type="radio" name="isDone" [(ngModel)]="todo.isDone" [value]=true> True 
+                    <input type="radio" name="isDone" [(ngModel)]="todo.isDone" [value]=false> False
             </div>
 
             <!-- Target Date -->
@@ -35,7 +35,7 @@
                     name = "targetDate" #todotargetdate = "ngModel">
             </div>
         
-            {{diagnostic}}<br>
+            <!-- {{diagnostic}}<br> -->
 
             <button type="submit" class="btn btn-success" [disabled] = "todoForm.form.invalid">Add Todo</button>
         </form>
@@ -45,15 +45,15 @@
         <h2>You submitted the following: </h2>
         <div class="row">
             <div class="col-xs-3">Username</div>
-            <div class="col-xs-9">{{ todo.username }}</div>
+            <div class="col-xs-9">{{ todo.user }}</div>
         </div>
         <div class="row">
             <div class="col-xs-3">Description</div>
-            <div class="col-xs-9">{{ todo.title }}</div>
+            <div class="col-xs-9">{{ todo.desc }}</div>
         </div>
         <div class="row">
             <div class="col-xs-3">Completed</div>
-            <div class="col-xs-9">{{ todo.completed }}</div>
+            <div class="col-xs-9">{{ todo.isDone }}</div>
         </div>
         <div class="row">
             <div class="col-xs-3">Target Date</div>

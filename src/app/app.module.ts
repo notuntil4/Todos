@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddtodoComponent } from './addtodo/addtodo.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { TodoService } from './services/todo.service';
 
 @NgModule({
   declarations: [
@@ -43,9 +45,11 @@ import { LoginComponent } from './login/login.component';
     MatGridListModule,
     MatTableModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    HttpClientModule
   ],
-  providers: [AuthGuard],
+  providers: [{provide: AuthGuard, useClass: AuthGuard}, 
+              {provide: TodoService, useClass: TodoService}] ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

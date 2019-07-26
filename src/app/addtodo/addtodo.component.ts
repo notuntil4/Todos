@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TODOS } from '../mock.todo';
+import { TodoService } from '../services/todo.service';
+import { Todo } from '../interfaces/todo.interface';
 
 @Component({
   selector: 'app-addtodo',
@@ -20,19 +22,30 @@ export class AddtodoComponent implements OnInit {
     submitted = false;
   
 
-  constructor() { }
+  constructor(private myData: TodoService) { }
 
   ngOnInit() {
   }
 
   get diagnostic() { return JSON.stringify(this.todo); }
 
-  onSubmit() { 
+  onSubmit(newTodo: any) { 
+    //addTodo place here
+    this.addTodo(newTodo);
     this.submitted = true; 
   }
 
-  addTodo(newTodo:any ) {
-    TODOS.push(newTodo);
+  addTodo(formData: any) {
+    let newTodo: any = {id:0, user: JSON.stringify(formData.user), desc: JSON.stringify(formData.desc),
+      isDone: formData.isDone, targetDate: formData.targetDate};
+    this.myData.addTodo(newTodo)
+      .subscribe(
+        (data: Todo) => {
+          console.log('create: ', data);
+        },
+        (error: any) => console.log(error),
+        () => console.log('completed')
+      );
   }
 
 }
